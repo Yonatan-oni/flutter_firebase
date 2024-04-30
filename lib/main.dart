@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/pages/auth_page.dart';
-import 'package:flutter_firebase/utils/signup_util.dart';
+import 'package:flutter_firebase/utils/account_util.dart';
 import 'firebase_options.dart';
 
 Future main() async {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      scaffoldMessengerKey: SignupUtil.messengerKey,
+      scaffoldMessengerKey: AccountUtil.messengerKey,
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

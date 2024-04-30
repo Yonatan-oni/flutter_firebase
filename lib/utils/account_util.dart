@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SignupUtil {
+class AccountUtil {
   static final messengerKey = GlobalKey<ScaffoldMessengerState>();
 
   static showSnackBar(String? text) {

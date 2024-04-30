@@ -1,15 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_firebase/main.dart';
-import 'package:flutter_firebase/utils/signup_util.dart';
+import 'package:flutter_firebase/pages/forgot_password_page.dart';
+import 'package:flutter_firebase/utils/account_util.dart';
 
 class LoginWidget extends StatefulWidget {
   final VoidCallback onClickedSignUp;
 
   // const LoginWidget({Key? key, required this.onClickedSignUp } ) : super (key:key);
-  const LoginWidget({super.key, required this.onClickedSignUp } );
-
+  const LoginWidget({super.key, required this.onClickedSignUp});
 
   @override
   State<LoginWidget> createState() => _LoginWidgetState();
@@ -85,17 +86,20 @@ class _LoginWidgetState extends State<LoginWidget> {
                     const SizedBox(
                       height: 6,
                     ),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(right: 8.0),
-                          child: Text(
-                            'Forgot Password ?',
-                            style: TextStyle(color: Colors.black87),
+                    GestureDetector(
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ForgotPasswordPage())),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(right: 8.0),
+                            child: Text(
+                              'Forgot Password ?',
+                              style: TextStyle(color: Colors.black87),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     const SizedBox(
                       height: 16,
@@ -118,13 +122,27 @@ class _LoginWidgetState extends State<LoginWidget> {
                         )),
                       ),
                     ),
-
-                    const SizedBox(height: 14,),
-                    RichText(text: TextSpan(style: const TextStyle(color: Colors.black87, fontSize: 18, fontWeight: FontWeight.w600), text: "No account ?  ", 
-                    children:[TextSpan ( recognizer: TapGestureRecognizer()
-                    ..onTap = widget.onClickedSignUp, 
-                     text: "Sign Up", style: TextStyle(decoration: TextDecoration.underline, fontSize: 18,fontWeight: FontWeight.w400, color: Colors.blue.shade300))] )),
-
+                    const SizedBox(
+                      height: 14,
+                    ),
+                    RichText(
+                        text: TextSpan(
+                            style: const TextStyle(
+                                color: Colors.black87,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600),
+                            text: "No account ?  ",
+                            children: [
+                          TextSpan(
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = widget.onClickedSignUp,
+                              text: "Sign Up",
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.blue.shade300))
+                        ])),
                   ],
                 ),
               ),
@@ -134,7 +152,6 @@ class _LoginWidgetState extends State<LoginWidget> {
       ),
     );
   }
-
 
   Future signIn() async {
     showDialog(
@@ -149,7 +166,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           email: emailController.text.trim(),
           password: passwordController.text.trim());
     } on FirebaseAuthException catch (e) {
-      SignupUtil.showSnackBar(e.message);
+      AccountUtil.showSnackBar(e.message);
     }
 
     navigatorKey.currentState!.popUntil((route) => route.isFirst);

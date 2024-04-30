@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/main.dart';
-import 'package:flutter_firebase/utils/signup_util.dart';
+import 'package:flutter_firebase/utils/account_util.dart';
 
 class SignUpWidget extends StatefulWidget {
   final VoidCallback onClickedSignIn;
@@ -95,23 +95,10 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                             : null,
                       ),
                       const SizedBox(
-                        height: 6,
-                      ),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(right: 8.0),
-                            child: Text(
-                              'Forgot Password ?',
-                              style: TextStyle(color: Colors.black87),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
                         height: 16,
                       ),
+                     
+          
                       GestureDetector(
                         onTap: signUp,
                         child: Container(
@@ -177,7 +164,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
           email: emailController.text.trim(),
           password: passwordController.text.trim());
     } on FirebaseAuthException catch (e) {
-      SignupUtil.showSnackBar(e.message);
+      AccountUtil.showSnackBar(e.message);
     }
 
     navigatorKey.currentState!.popUntil((route) => route.isFirst);
