@@ -1,8 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase/main.dart';
+import 'package:flutter_firebase/utils/signup_util.dart';
 
 class LoginWidget extends StatefulWidget {
-  const LoginWidget({super.key});
+  final VoidCallback onClickedSignUp;
+
+  // const LoginWidget({Key? key, required this.onClickedSignUp } ) : super (key:key);
+  const LoginWidget({super.key, required this.onClickedSignUp } );
+
 
   @override
   State<LoginWidget> createState() => _LoginWidgetState();
@@ -11,6 +18,15 @@ class LoginWidget extends StatefulWidget {
 class _LoginWidgetState extends State<LoginWidget> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,7 +117,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                               fontWeight: FontWeight.bold),
                         )),
                       ),
-                    )
+                    ),
+
+                    const SizedBox(height: 14,),
+                    RichText(text: TextSpan(style: const TextStyle(color: Colors.black87, fontSize: 18, fontWeight: FontWeight.w600), text: "No account ?  ", 
+                    children:[TextSpan ( recognizer: TapGestureRecognizer()
+                    ..onTap = widget.onClickedSignUp, 
+                     text: "Sign Up", style: TextStyle(decoration: TextDecoration.underline, fontSize: 18,fontWeight: FontWeight.w400, color: Colors.blue.shade300))] )),
+
                   ],
                 ),
               ),
@@ -112,8 +135,23 @@ class _LoginWidgetState extends State<LoginWidget> {
     );
   }
 
-  void signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text.trim(), password: passwordController.text.trim());
+
+  Future signIn() async {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => const Center(
+              child: CircularProgressIndicator(),
+            ));
+
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim());
+    } on FirebaseAuthException catch (e) {
+      SignupUtil.showSnackBar(e.message);
+    }
+
+    navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 }
