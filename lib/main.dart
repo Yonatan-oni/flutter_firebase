@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/pages/auth_page.dart';
+import 'package:flutter_firebase/pages/home_page.dart';
 import 'package:flutter_firebase/utils/account_util.dart';
 import 'firebase_options.dart';
 
@@ -47,17 +48,18 @@ class MainPage extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasData) {
-            return Center(
-                child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text('success!'),
-                IconButton(
-                  icon: const Icon(Icons.logout),
-                  onPressed: () => FirebaseAuth.instance.signOut(),
-                )
-              ],
-            ));
+            return const HomePage();
+            // return Center(
+            //     child: Column(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: <Widget>[
+            //     const HomePage(),
+            //     IconButton(
+            //       icon: const Icon(Icons.logout),
+            //       onPressed: () => FirebaseAuth.instance.signOut(),
+            //     )
+            //   ],
+            // ));
           } else if (snapshot.hasError) {
             return const Center(
               child: Text('Incorrect credential'),
