@@ -1,0 +1,57 @@
+{
+    "language": "English",
+    "@language":{
+        "description": "The current Language"
+    },
+    "email": "Email",
+    "@email":{
+        "description": "Email text field place holder"
+    },
+    "emailValidator": "Enter valid email",
+    "@emailValidator":{
+        "description": "email validator error message"
+    },
+    "password": "Password",
+    "@password":{
+        "description": "password text field place holder"
+    },
+    "passwordValidator": "Enter min 6 characters",
+    "@passwordValidator":{
+        "description": "email validator error message"
+    },
+    "forgotPassword": "Forgot Password ?",
+    "@forgotPassword":{
+        "description": "forgot password text"
+    },
+    "signIn": "Sign In",
+    "@signIn":{
+        "description": "button text"
+    },
+    "signUp": "Sign Up",
+    "@signUp":{
+        "description": "button text"
+    },
+    "noAccount": "No account ?",
+    "@noAccount":{
+        "description": "text"
+    },
+    "alreadyHaveAccount": "Already have an account ?",
+    "@alreadyHaveAccount":{
+        "description": "text"
+    },
+    "login": "Login",
+    "@login":{
+        "description": "text"
+    },
+    "reset": "Reset",
+    "@reset":{
+        "description": "button text"
+    },
+    "passwordResetEmail": "Password reset email sent.",
+    "@passwordReset":{
+        "description": "Password reset email sent."
+    }
+
+    
+}
+

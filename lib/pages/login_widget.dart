@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_firebase/components/forgot_password_btn.dart';
 import 'package:flutter_firebase/components/input_field.dart';
 import 'package:flutter_firebase/components/rich_text_custom.dart';
-import 'package:flutter_firebase/components/sign_in_handler.dart';
 import 'package:flutter_firebase/components/sign_in_up_btn.dart';
 import 'package:flutter_firebase/components/sign_in_up_page_alignment.dart';
 import 'package:flutter_firebase/main.dart';
 import 'package:flutter_firebase/utils/account_util.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginWidget extends StatefulWidget {
   final VoidCallback onClickedSignUp;
@@ -43,21 +43,26 @@ class _LoginWidgetState extends State<LoginWidget> {
               ),
               InputField(
                   controller: emailController,
-                  labelText: "Email",
+                  // labelText: "Email",
+                  labelText: AppLocalizations.of(context)!.email,
+
                   obscureText: false,
                   validator: (email) =>
                       email != null && !EmailValidator.validate(email)
-                          ? "Enter valid email!"
+                          // ? "Enter valid email!"
+                          ? AppLocalizations.of(context)!.emailValidator
                           : null),
               const SizedBox(
                 height: 12,
               ),
               InputField(
                   controller: passwordController,
-                  labelText: "Password",
+                  // labelText: "Password",
+                  labelText: AppLocalizations.of(context)!.password,
                   obscureText: true,
                   validator: (value) => value != null && value.length < 6
-                      ? "Enter min. 6 Characters"
+                      // ? "Enter min. 6 Characters"
+                      ? AppLocalizations.of(context)!.passwordValidator
                       : null),
               const SizedBox(
                 height: 6,
@@ -66,13 +71,17 @@ class _LoginWidgetState extends State<LoginWidget> {
               const SizedBox(
                 height: 16,
               ),
-              SignInUpBtn(onTap: signIn, btnName: "Sign In"),
+              SignInUpBtn(onTap: signIn, btnName: AppLocalizations.of(context)!.signIn),
               const SizedBox(
                 height: 14,
               ),
               RichTextCustom(
-                question: "No account ? ",
-                action: "Sign Up",
+                // question: "No account ? ",
+                // action: "Sign Up",
+                
+                question: AppLocalizations.of(context)!.noAccount,
+                action: AppLocalizations.of(context)!.signUp,
+
                 recognizer: TapGestureRecognizer()
                   ..onTap = widget.onClickedSignUp,
               ),

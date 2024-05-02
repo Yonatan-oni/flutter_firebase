@@ -1,0 +1,16 @@
+{
+    "language": "إنجليزي",
+    "email": "بريد إلكتروني",
+    "emailValidator": "أدخل بريدًا إلكترونيًا صالحًا",
+    "password": "كلمة المرور",
+    "passwordValidator": "أدخل 6 أحرف على الأقل",
+    "forgotPassword": "هل نسيت كلمة السر ؟",
+    "signIn": "تسجيل الدخول",
+    "signUp": "اشتراك",
+    "noAccount": "لا حساب ؟",
+    "alreadyHaveAccount": "هل لديك حساب ؟",
+    "login": "تسجيل الدخول",
+    "reset": "إعادة ضبط",
+    "passwordResetEmail": "تم إرسال البريد الإلكتروني لإعادة تعيين كلمة المرور."
+}
+

@@ -8,6 +8,8 @@ import 'package:flutter_firebase/components/sign_in_up_btn.dart';
 import 'package:flutter_firebase/components/sign_in_up_page_alignment.dart';
 import 'package:flutter_firebase/main.dart';
 import 'package:flutter_firebase/utils/account_util.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class SignUpWidget extends StatefulWidget {
   final VoidCallback onClickedSignIn;
@@ -37,25 +39,25 @@ class _SignUpWidgetState extends State<SignUpWidget> {
       backgroundColor: Colors.grey[100],
       body: SignInUpPageAlignment(pageColumn: Column(children: <Widget>[
         SizedBox( height: 100, child: Image.asset('assets/img/firebase.png'),),
-                      InputField(controller: emailController, labelText: "Email", obscureText: false, 
-                      validator:  (email) => email != null && !EmailValidator.validate(email) ? "Enter valid email!": null),
+                      InputField(controller: emailController, labelText: AppLocalizations.of(context)!.email, obscureText: false, 
+                      validator:  (email) => email != null && !EmailValidator.validate(email) ? AppLocalizations.of(context)!.emailValidator : null),
 
 
                       const SizedBox(height: 12,),
                   
-                      InputField(controller: passwordController, labelText: "Password", obscureText: true, 
+                      InputField(controller: passwordController, labelText: AppLocalizations.of(context)!.password, obscureText: true, 
                       validator:  (value) =>value != null && value.length < 6 
-                      ? "Enter min. 6 Characters" : null),
+                      ? AppLocalizations.of(context)!.passwordValidator : null),
 
                       const SizedBox(height: 16,),
 
 
-                      SignInUpBtn(onTap: signUp, btnName: "Sign Up"),
+                      SignInUpBtn(onTap: signUp, btnName: AppLocalizations.of(context)!.signUp),
     
                       const SizedBox(height: 14, ),
 
 
-                    RichTextCustom(question: "Already have an account ?  ", action: "Login", recognizer: TapGestureRecognizer()..onTap = widget.onClickedSignIn ),
+                    RichTextCustom(question: AppLocalizations.of(context)!.alreadyHaveAccount, action: AppLocalizations.of(context)!.login, recognizer: TapGestureRecognizer()..onTap = widget.onClickedSignIn ),
 
 
       ],))

@@ -5,6 +5,9 @@ import 'package:flutter_firebase/pages/auth_page.dart';
 import 'package:flutter_firebase/pages/home_page.dart';
 import 'package:flutter_firebase/utils/account_util.dart';
 import 'firebase_options.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_firebase/l10n/l10n.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,6 +33,14 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MainPage(),
+      supportedLocales: L10n.all,
+      locale: const Locale('ar'),
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate
+      ],
     );
   }
 }

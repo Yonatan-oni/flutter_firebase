@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
               itemCount: notesList.length,
               itemBuilder: ((context, index) {
               DocumentSnapshot document = notesList[index];
-              String docId = document.id;
+              // String docId = document.id;
               Map<String, dynamic> data =
                   document.data() as Map<String, dynamic>;
 

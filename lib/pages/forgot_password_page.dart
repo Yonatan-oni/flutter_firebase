@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/main.dart';
 import 'package:flutter_firebase/utils/account_util.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -45,7 +47,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       cursorColor: Colors.white,
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
-                          labelText: 'Email ',
+                          labelText: AppLocalizations.of(context)!.email,
                           enabledBorder: const OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
                           ),
@@ -66,10 +68,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         decoration: BoxDecoration(
                             color: Colors.blue.shade300,
                             borderRadius: BorderRadius.circular(6)),
-                        child: const Center(
+                        child: Center(
                             child: Text(
-                          "Reset",
-                          style: TextStyle(
+                          AppLocalizations.of(context)!.reset,
+                          style: const TextStyle(
                               color: Colors.white,
                               fontSize: 16,
                               fontWeight: FontWeight.bold),
@@ -100,7 +102,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     try {
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: emailController.text.trim());
-      AccountUtil.showSnackBar("Password reset email sent.");
+      AccountUtil.showSnackBar(AppLocalizations.of(context)!.passwordResetEmail);
     } on FirebaseAuthException catch (e) {
       AccountUtil.showSnackBar(e.message);
     }

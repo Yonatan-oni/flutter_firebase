@@ -1,0 +1,16 @@
+{
+    "language": "Anglais",
+    "email": "E-mail",
+    "emailValidator": "Entrez une adresse email valide",
+    "password": "Mot de passe",
+    "passwordValidator": "Entrez au moins 6 caractères",
+    "forgotPassword": "Mot de passe oublié ?",
+    "signIn": "Se connecter",
+    "signUp": "S'inscrire",
+    "noAccount": "Pas de compte ?",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
+    "login": "Se connecter",
+    "reset": "Réinitialiser",
+    "passwordResetEmail": "E-mail de réinitialisation du mot de passe envoyé."
+}
+
